@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  public readonly title = 'GitHub API';
+  
+  // TODO: get from config / package.json.
+  public readonly version = "1.0.0";
 }
