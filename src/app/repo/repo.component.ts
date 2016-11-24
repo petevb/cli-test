@@ -11,7 +11,7 @@ import { Repo } from './repo';
   providers: [RepoService]
 })
 export class RepoComponent implements OnInit {
-  private title: string = "RepoComponent";
+  private title: string = 'RepoComponent';
   private repos: Promise<any[]>;
   private selectedRepo: Repo;
 
@@ -20,7 +20,7 @@ export class RepoComponent implements OnInit {
   public getRepos(): void {
     //this.repoService.getRepos().then(r => this.repos = r);
     //this.repos = this.repoService.search("foo").then(r => this.repos = r);
-    this.repos = this.repoService.search("typescript")
+    this.repos = this.repoService.search('typescript')
       .catch(e => {
         // TODO: Tell user, don't log to console.
         console.warn(e);
@@ -37,6 +37,7 @@ export class RepoComponent implements OnInit {
   }
 
   public onSelect(repo: Repo): void {
+    console.warn('onSelect', repo);
     this.selectedRepo = repo;
   }
 }

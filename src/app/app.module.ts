@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
-import { RepoService } from './repo/repo.component';
+import { RepoService } from './repo/repo.service';
 
 @NgModule({
   declarations: [

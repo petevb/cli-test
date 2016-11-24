@@ -7,7 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public readonly title = 'GitHub API';
-  
-  // TODO: get from config / package.json.
-  public readonly version = "1.0.0";
 }
