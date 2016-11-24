@@ -2,15 +2,7 @@ h1 {
     color:red;
 }
 
-ul {
-    /*display: flex;
-    align-items:stretch;
-    flex-wrap: no-wrap;
-    flex-basis: 50px;*/
+li {
+    list-style-type: none;
 }
 
-li {
-    /*flex-grow: 1;
-    flex-shrink: 0;
-    flex-direction: column;*/
-}
