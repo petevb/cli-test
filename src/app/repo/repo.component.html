@@ -1,12 +1,15 @@
-<p>
-  repo works!
-</p>
 <h1>{{title}}</h1>
 <h2>Repos</h2>
 <ul>
-  <li *ngFor="let repo of repos"
+  <li *ngFor="let repo of repos | async"
     [class.selected]="repo === selectedRepo"
     (click)="onSelect(repo)">
-    <span class="badge">{{repo.name}}</span> {{repo.description}}
+    <dl>
+      <dt><span class="badge bold">{{repo.full_name}}</span></dt><dd>{{repo.description}}</dd>
+      <dt>url</dt><dd>{{repo.url}}</dd>
+      <dt>forks count</dt><dd>{{repo.forks_count}}</dd>
+      <dt>stargazers count</dt><dd>{{repo.stargazers_count}}</dd>
+      <dt>open issues count</dt><dd>{{repo.open_issues_count}}</dd>
+    </dl>
   </li>
 </ul>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import { Observable } from 'rxjs/Rx';
 
 import { RepoService } from './repo.service';
 import { Repo } from './repo';
@@ -11,13 +12,24 @@ import { Repo } from './repo';
 })
 export class RepoComponent implements OnInit {
   private title: string = "RepoComponent";
-  private repos: Repo[];
+  private repos: Promise<any[]>;
   private selectedRepo: Repo;
 
-  constructor(private repoService: RepoService) { }
+  constructor(public repoService: RepoService) { }
 
   public getRepos(): void {
-    this.repoService.getRepos().then(r => this.repos = r);
+    //this.repoService.getRepos().then(r => this.repos = r);
+    //this.repos = this.repoService.search("foo").then(r => this.repos = r);
+    this.repos = this.repoService.search("typescript")
+      .catch(e => {
+        // TODO: Tell user, don't log to console.
+        console.warn(e);
+        //return Observable.of(true);
+      });
+  }
+
+  search(name) {
+
   }
 
   ngOnInit() {

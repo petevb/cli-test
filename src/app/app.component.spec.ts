@@ -1,23 +1,40 @@
 /* tslint:disable:no-unused-variable */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+//import { HttpModule } from '@angular/http';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { Http } from '@angular/http';
+import {
+  HttpModule, XHRBackend, Response, ResponseOptions
+} from '@angular/http';
+
+import { MockBackend, MockConnection } from '@angular/http/testing';
+
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
+import { RepoService } from './repo/repo.service';
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+let fixture: ComponentFixture<AppComponent>;
+let app: AppComponent
 
 describe('AppComponent', () => {
   const title = "GitHub API";
-  let fixture: ComponentFixture<AppComponent>;
-  let app: AppComponent
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent, RepoComponent
-      ],
-    }); //.compileComponents();
-  }));
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent, 
+        RepoComponent
+      ],
+      imports: [
+        HttpModule
+      ],
+      providers: [
+        RepoService,
+        { provide: XHRBackend, useClass: MockBackend }
+      ]
+    }); //.compileComponents();
+
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.debugElement.componentInstance;
   });
