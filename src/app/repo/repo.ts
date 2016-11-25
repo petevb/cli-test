@@ -1,6 +1,7 @@
 export class Repo {
     public id: string;
     public name: string;
+    public fullName: string;
     public url?: string | undefined;
     public description?: string | undefined;
     public forkCount?: number | undefined;

@@ -15,6 +15,7 @@ import { Repo } from '../repo/repo';
 export class RepoDetailComponent implements OnInit {
   @Input()
   repo: Repo;
+  issues: any[];
 
   constructor(
     private repoService: RepoService,
@@ -26,9 +27,11 @@ export class RepoDetailComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.repoService.getRepo(+params['id']))
       .subscribe(repo => {
-        debugger;
         console.log(repo);
-        this.repo = repo
+        this.repo = repo;
+        this.repoService.getIssues(repo.fullName).then(
+          issues => this.issues = issues
+        );
       });
   }
 

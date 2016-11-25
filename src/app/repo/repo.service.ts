@@ -51,6 +51,13 @@ export class RepoService {
     return this.search()
       .then(repos => repos.find(repo => repo.id === id))
       .then(repo => {
+        return {
+          id: repo.id,
+          fullName: repo.full_name,
+          name: repo.name
+        };
+      })
+/*      .then(repo => {
         const url = `https://api.github.com/search/issues?q=repo:${repo.full_name}`;
         console.warn(url);
         return url;
@@ -58,7 +65,7 @@ export class RepoService {
         return this.http.get(url)
           .map(response => response.json().items)
           .toPromise();
-      })
+      })*/
   }
 
   public getIssues(fullName: string): Promise</*Issues[]*/ any> {

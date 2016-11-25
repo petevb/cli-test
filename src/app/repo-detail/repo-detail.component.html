@@ -1,8 +1,13 @@
 <div *ngIf="repo">
-  <h2>{{repo.name}} details!</h2>
-  <div><label>id: </label>{{repo.id}}</div>
+  <h2>{{repo.name}}</h2>
   <div><label>name: </label>{{repo.name}}</div>
-  <div><label>description: </label>{{repo.description}}</div>
   <div><label>issues_url: </label><a href="{{repo.issues_url}}">{{repo.issues_url}}</a></div>
+  <ul *ngIf="issues" class="list-unstyled">
+    <li *ngFor="let issue of issues">
+      <h5>{{issue.title}}</h5>
+      <span> state: {{issue.state}}</span> Issue {{issue.number}} opened at {{issue.created_at}} by {{issue.user.login}}
+      <hr>
+    </li>
+  </ul>
 </div>
 <button (click)="goBack()">Back</button>
