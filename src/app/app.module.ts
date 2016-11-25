@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
@@ -19,7 +20,17 @@ import { RepoDetailComponent } from './repo-detail/repo-detail.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: '/repo-list',
+        pathMatch: 'full'
+      }, {
+        path: 'repo-list',
+        component: RepoComponent
+      }
+    ])
   ],
   providers: [RepoService],
   bootstrap: [AppComponent]

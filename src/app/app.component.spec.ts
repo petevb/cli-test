@@ -8,6 +8,7 @@ import {
   HttpModule, XHRBackend, Response, ResponseOptions
 } from '@angular/http';
 
+import { RouterTestingModule } from '@angular/router/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { AppComponent } from './app.component';
@@ -30,7 +31,8 @@ describe('AppComponent', () => {
         RepoDetailComponent
       ],
       imports: [
-        HttpModule
+        HttpModule,
+        RouterTestingModule
       ],
       providers: [
         RepoService,

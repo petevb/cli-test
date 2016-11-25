@@ -12,9 +12,9 @@ import { Repo } from './repo';
   providers: [RepoService]
 })
 export class RepoComponent implements OnInit {
+  selectedRepo: Repo;
   private title: string = 'RepoComponent';
   private repos: Promise<any[]>;
-  selectedRepo: Repo;
 
   constructor(public repoService: RepoService) { }
 

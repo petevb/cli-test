@@ -17,7 +17,7 @@ export class RepoService {
   } 
 
   public search(name: string) {
-    let url = `https://api.github.com/search/repositories?q=${name}`;
+    let url = `https://api.github.com/search/repositories?q=${name}&per_page=4`;
 
     // using fetch api something like:
     // fetch(url).then(response => response.json());
