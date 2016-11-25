@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { Observable } from 'rxjs/Rx';
 
+//import { RepoDetailComponent  } from '../repo-detail/repo-detail.component';
 import { RepoService } from './repo.service';
 import { Repo } from './repo';
 
@@ -13,7 +14,7 @@ import { Repo } from './repo';
 export class RepoComponent implements OnInit {
   private title: string = 'RepoComponent';
   private repos: Promise<any[]>;
-  private selectedRepo: Repo;
+  selectedRepo: Repo;
 
   constructor(public repoService: RepoService) { }
 
@@ -38,6 +39,10 @@ export class RepoComponent implements OnInit {
 
   public onSelect(repo: Repo): void {
     console.warn('onSelect', repo);
-    this.selectedRepo = repo;
+    if (this.selectedRepo === repo) {
+      this.selectedRepo = null;
+    } else {
+      this.selectedRepo = repo;
+    }
   }
 }

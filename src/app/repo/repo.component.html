@@ -1,15 +1,23 @@
 <h1>{{title}}</h1>
-<h2>Repos</h2>
-<ul>
-  <li *ngFor="let repo of repos | async"
-    [class.selected]="repo === selectedRepo"
-    (click)="onSelect(repo)">
-    <dl class="dl-horizontal">
-      <dt>{{repo.full_name}}</dt><dd>{{repo.description}}</dd>
-      <dt>url</dt><dd>{{repo.url}}</dd>
-      <dt>forks count</dt><dd><span class="badge">{{repo.forks_count}}</span></dd>
-      <dt>stargazers count</dt><dd><span class="badge bold">{{repo.stargazers_count}}</span></dd>
-      <dt>open issues count</dt><dd><span class="badge bold">{{repo.open_issues_count}}</span></dd>
-    </dl>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-md-4">
+    <ul class="list-unstyled">
+      <li *ngFor="let repo of repos | async" [class.bg-info]="repo === selectedRepo" (click)="onSelect(repo)">
+        <h3><a href="{{repo.html_url}}">{{repo.full_name}} <small>({{repo.html_url}})</small></a></h3>
+        <p>{{repo.description}}</p>
+        <a href="{{repo.url}}">{{repo.url}}</a>
+        <a href="{{repo.issues_url}}">{{repo.issues_url}}</a>
+        <ul class="list-inline">
+          <li>Forks <span class="badge">{{repo.forks_count}}</span></li>
+          <li>Stargazers <span class="badge">{{repo.stargazers_count}}</span></li>
+          <li>Open Issues <span class="badge">{{repo.open_issues_count}}</span></li>
+        </ul>
+        <hr>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-7">
+    <app-repo-detail [repo]="selectedRepo"></app-repo-detail>
+  </div>
+</div>

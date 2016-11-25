@@ -12,6 +12,8 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
+import { RepoDetailComponent  } from './repo-detail/repo-detail.component';
+
 import { RepoService } from './repo/repo.service';
 
 let fixture: ComponentFixture<AppComponent>;
@@ -24,7 +26,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent, 
-        RepoComponent
+        RepoComponent,
+        RepoDetailComponent
       ],
       imports: [
         HttpModule
@@ -39,15 +42,15 @@ describe('AppComponent', () => {
     app = fixture.debugElement.componentInstance;
   });
 
-  it('should create the app', () => {
+  it('should create the app', async(() => {
     expect(app).toBeTruthy();
-  });
+  }));
 
-  it('should have the correct title', () => {
+  it('should have the correct title', async(() => {
     expect(app.title).toEqual(title);
-  });
+  }));
 
-  it('should render title in a h1 tag', () => {
+  it('should render title in a h1 tag', async(() => {
     fixture.detectChanges();
     let nativeElement = fixture.debugElement.nativeElement;
 
@@ -60,5 +63,5 @@ describe('AppComponent', () => {
     const h1 = nativeElement;
     expect(h1.innerText).toMatch(/github/i,
       `<h1> should say something about "${title}"`);
-  });
+  }));
 });

@@ -7,11 +7,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
 import { RepoService } from './repo/repo.service';
+import { RepoDetailComponent } from './repo-detail/repo-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RepoComponent
+    RepoComponent,
+    RepoDetailComponent
   ],
   imports: [
     BrowserModule,

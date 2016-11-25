@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { RepoComponent } from './repo.component';
 import { RepoService } from './repo.service';
+import { RepoDetailComponent  } from '../repo-detail/repo-detail.component';
 
 
 describe('RepoComponent', () => {
@@ -23,7 +24,10 @@ describe('RepoComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ RepoComponent ],
+      declarations: [ 
+        RepoComponent,
+        RepoDetailComponent 
+      ],
       imports: [
         HttpModule
       ],
