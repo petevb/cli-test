@@ -23,7 +23,7 @@ let app: AppComponent
 describe('AppComponent', () => {
   const title = "GitHub API";
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent, 
@@ -38,8 +38,10 @@ describe('AppComponent', () => {
         RepoService,
         { provide: XHRBackend, useClass: MockBackend }
       ]
-    }); //.compileComponents();
+    }).compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.debugElement.componentInstance;
   });

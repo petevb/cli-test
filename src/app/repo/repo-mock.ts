@@ -2,10 +2,10 @@ import { Repo } from './repo';
 
 class MockData {
     static readonly REPOS: Repo[] = [
-        { name: "test1", url: "http://test.github.io/", description: "lorem ipsum dolor sit amet", forkCount: 27 },
-        { name: "test2", url: "http://test.github.io/", description: "lorem ipsum dolor sit amet", forkCount: 27 },
-        { name: "test3", url: "http://test.github.io/", description: "lorem ipsum dolor sit amet", forkCount: 27 },
-        { name: "test4", url: "http://test.github.io/", description: "lorem ipsum dolor sit amet", forkCount: 27 },
+        { id: "1", name: "test1", url: "http://test.github.io/", description: "lorem ipsum dolor sit amet" },
+        { id: "2", name: "test2", url: "http://test.github.io/", description: "lorem ipsum dolor sit amet" },
+        { id: "3", name: "test3", url: "http://test.github.io/", description: "lorem ipsum dolor sit amet" },
+        { id: "4", name: "test4", url: "http://test.github.io/", description: "lorem ipsum dolor sit amet" }
     ];
 
     public getData(): Promise<Repo[]> {

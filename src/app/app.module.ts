@@ -29,7 +29,11 @@ import { RepoDetailComponent } from './repo-detail/repo-detail.component';
       }, {
         path: 'repo-list',
         component: RepoComponent
-      }
+      },
+      {
+        path: 'detail/:id',
+        component: RepoDetailComponent
+      },
     ])
   ],
   providers: [RepoService],

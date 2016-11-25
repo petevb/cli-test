@@ -1,14 +1,17 @@
 /* tslint:disable:no-unused-variable */
-
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { RepoComponent } from './repo.component';
 import { RepoService } from './repo.service';
 import { RepoDetailComponent  } from '../repo-detail/repo-detail.component';
 
+class RouterStub {
+  navigateByUrl(url: string) { return url; }
+}
 
 describe('RepoComponent', () => {
   let component: RepoComponent;
@@ -16,7 +19,7 @@ describe('RepoComponent', () => {
   let repoServiceStub = {};
 
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     repoServiceStub = {
       search() {
         return [];
@@ -31,10 +34,14 @@ describe('RepoComponent', () => {
       imports: [
         HttpModule
       ],
-      providers: [ {provide: RepoService, useValue: repoServiceStub} ]
-    });
-    //.compileComponents();
+      providers: [ 
+        { provide: RepoService, useValue: repoServiceStub }, 
+        { provide: Router, useValue: RouterStub } 
+      ]
+    }).compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(RepoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

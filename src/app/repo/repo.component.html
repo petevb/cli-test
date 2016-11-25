@@ -1,8 +1,11 @@
-<h1>{{title}}</h1>
-<div class="row">
-  <div class="col-md-4">
+<h2 *ngIf="waiting">Please wait...</h2>
+<h2 *ngIf="total_count">We've found {{total_count}} results for XXXX</h2>
+
+<div class="row" *ngIf="repos">
+  <div class="col-md-1"> </div>
+  <div class="col-md-10">
     <ul class="list-unstyled">
-      <li *ngFor="let repo of repos | async" [class.bg-info]="repo === selectedRepo" (click)="onSelect(repo)">
+      <li *ngFor="let repo of repos">
         <h3><a href="{{repo.html_url}}">{{repo.full_name}} <small>({{repo.html_url}})</small></a></h3>
         <p>{{repo.description}}</p>
         <a href="{{repo.url}}">{{repo.url}}</a>
@@ -12,12 +15,10 @@
           <li>Stargazers <span class="badge">{{repo.stargazers_count}}</span></li>
           <li>Open Issues <span class="badge">{{repo.open_issues_count}}</span></li>
         </ul>
+        <button (click)="onSelect(repo)">View Issues</button>
         <hr>
       </li>
     </ul>
   </div>
-  <div class="col-md-1"></div>
-  <div class="col-md-7">
-    <app-repo-detail [repo]="selectedRepo"></app-repo-detail>
-  </div>
+  <div class="col-md-1"> </div>
 </div>
