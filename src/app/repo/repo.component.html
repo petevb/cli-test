@@ -1,2 +1,3 @@
-<app-search></app-search>
-<app-repo-list></app-repo-list>
+
+<app-search (onSearchChanged)="list.onSearchChanged($event)"></app-search>
+<app-repo-list #list></app-repo-list>

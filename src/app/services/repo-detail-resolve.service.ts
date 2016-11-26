@@ -25,12 +25,13 @@ export class RepoDetailResolveService implements Resolve<RepoModel> {
 
   resolve(route: ActivatedRouteSnapshot): Promise<RepoModel> | boolean {
     const id: number = +route.params['id'];
+    const name: number = +route.params['name'];
 
     console.log(`RepoDetailResolve[Service] got id:${id}`);
 
     //   .switchMap((params: Params) => this.repoService.getRepo(+params['id']))
 
-    return this.repoService.getRepo(id).then(repo => {
+    return this.repoService.getRepo(name, id).then(repo => {
       if (repo) {
         return repo;
       } else { // id not found

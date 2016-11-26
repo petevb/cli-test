@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 // Don't do this in production - all of RxJS is big.
 import { Observable } from 'rxjs/Rx';
-import { Router }   from '@angular/router';
+import { Router } from '@angular/router';
 
 //import { RepoDetailComponent  } from '../repo-detail/repo-detail.component';
 import { RepoService } from '../services/repo.service';
@@ -17,43 +17,48 @@ export class RepoListComponent implements OnInit {
   selectedRepo: RepoModel;
   private title: string = 'RepoComponent';
   private total_count: number;
-  private repos: RepoModel[];
-  private waiting: boolean = true;
+  private searchTerm: string;
+  private showResults: boolean = false;
+
+  @Input()
+  public repos: RepoModel[];
+  private waiting: boolean = false;
 
   constructor(
     private router: Router,
-    private repoService: RepoService) { }
+    private repoService: RepoService
+  ) { }
+
+  public onSearchChanged(value: string) {
+    this.showResults = false;
+    if(value !== this.searchTerm) {
+      this.searchTerm = value; 
+      this.getRepos();
+    }
+  }
 
   public getRepos(): void {
-    //this.repoService.getRepos().then(r => this.repos = r);
-    //this.repos = this.repoService.search("foo").then(r => this.repos = r);
-    this.repoService.searchObservable('typescript')
+    this.waiting = true;
+    this.repoService.searchObservable(this.searchTerm)
       .subscribe(
-        data => {
-          console.warn(`total count = ${data.total_count}`);
-          this.total_count = data.total_count;
-          this.repos = data.items;
-          // Make this computed so that it updates when the observable refreshes?
-          this.waiting = false;
-        },
-        error => {
-          // TODO: Tell user, don't log to console.
-          console.warn(error);
-        }
+      data => {
+        console.warn(`total count = ${data.total_count}`);
+        this.total_count = data.total_count;
+        this.repos = data.items;
+        // Make these computed so that it updates when the observable refreshes?
+        this.waiting = false;
+        this.showResults = true;
+      },
+      error => {
+        // TODO: Tell user, don't log to console.
+        console.warn(error);
+      }
       );
-  }
-
-  search(name) {
-
-  }
-
-  ngOnInit() {
-    this.getRepos();
   }
 
   public onSelect(repo: RepoModel): void {
     console.log('onSelect', repo);
     this.selectedRepo = repo;
-    this.router.navigate(['/repo-detail', this.selectedRepo.id]);
+    this.router.navigate(['/repo-detail', this.selectedRepo.name, this.selectedRepo.id]);
   }
 }

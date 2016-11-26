@@ -8,13 +8,16 @@ import { ReposMock } from './repo-mock';
 
 @Injectable()
 export class RepoService {
+  term: string;
+
   constructor(private http: Http) { }
 
   public getRepos(): Promise<RepoModel[]> {
     return ReposMock.getData();
   }
 
-  public search(name: string = 'typescript') {
+  public search(name: string) {
+    this.term = name;
     let url = `https://api.github.com/search/repositories?q=${name}&per_page=4`;
 
     // using fetch api something like:
@@ -28,7 +31,11 @@ export class RepoService {
       });
   }
 
-  public searchObservable(name: string = 'typescript') {
+  public searchObservable(name: string) {
+    if (!name) {
+      throw new Error("name cannot be empty.");
+    }
+    
     let url = `https://api.github.com/search/repositories?q=${name}&per_page=4`;
 
     return this.http.get(url)
@@ -45,8 +52,8 @@ export class RepoService {
     return data || {};
   }
 
-  public getRepo(id: number): Promise<RepoModel> {
-    return this.search()
+  public getRepo(name:string, id: number): Promise<RepoModel> {
+    return this.search(name)
       .then(repos => repos.find(repo => repo.id === id))
       .then(repo => {
         console.log(`RepoService for id ${id} got repo ${repo || "undefined"}`);

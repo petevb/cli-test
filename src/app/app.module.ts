@@ -42,7 +42,7 @@ import { RepoListComponent } from './repo-list/repo-list.component';
         component: RepoListComponent
       },
       {
-        path: 'repo-detail/:id',
+        path: 'repo-detail/:name/:id',
         component: RepoDetailComponent,
         resolve: {
           repo: RepoDetailResolveService
