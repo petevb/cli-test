@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { Router }   from '@angular/router';
 
 //import { RepoDetailComponent  } from '../repo-detail/repo-detail.component';
-import { RepoService } from './repo.service';
+import { RepoService } from '../services/repo.service';
 import { Repo } from './repo';
 
 @Component({

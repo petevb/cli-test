@@ -3,8 +3,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
-import { RepoService } from '../repo/repo.service';
+import { RepoService } from '../services/repo.service';
 import { Repo } from '../repo/repo';
+import { IssuesComponent } from '../issues/issues.component';
 
 @Component({
   selector: 'app-repo-detail',

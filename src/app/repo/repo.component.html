@@ -6,7 +6,11 @@
   <div class="col-md-10">
     <ul class="list-unstyled">
       <li *ngFor="let repo of repos">
-        <h3><a href="{{repo.html_url}}">{{repo.full_name}} <small>({{repo.html_url}})</small></a></h3>
+        <h3>
+          <a href="{{repo.html_url}}">{{repo.full_name}} 
+            <small>({{repo.html_url}})</small>
+          </a>
+        </h3>
         <p>{{repo.description}}</p>
         <a href="{{repo.url}}">{{repo.url}}</a>
         <a href="{{repo.issues_url}}">{{repo.issues_url}}</a>

@@ -7,7 +7,8 @@ import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { RepoDetailComponent } from './repo-detail.component';
-import { RepoService } from '../repo/repo.service';
+import { RepoService } from '../services/repo.service';
+import { IssuesComponent } from '../issues/issues.component';
 
 describe('RepoDetailComponent', () => {
   let component: RepoDetailComponent;
@@ -16,12 +17,17 @@ describe('RepoDetailComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ RepoDetailComponent ],
+      declarations: [ 
+        RepoDetailComponent,
+        IssuesComponent 
+      ],
       imports: [
         HttpModule,
         RouterTestingModule
       ],
-      providers: [ {provide: RepoService, useValue: repoServiceStub} ]
+      providers: [ 
+        {provide: RepoService, useValue: repoServiceStub} 
+      ]
     })
     .compileComponents();
   });

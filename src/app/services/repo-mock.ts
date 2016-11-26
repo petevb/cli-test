@@ -1,4 +1,4 @@
-import { Repo } from './repo';
+import { Repo } from '../repo/repo';
 
 class MockData {
     static readonly REPOS: Repo[] = [

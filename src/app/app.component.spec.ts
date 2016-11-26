@@ -14,8 +14,9 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
 import { RepoDetailComponent  } from './repo-detail/repo-detail.component';
+import { IssuesComponent  } from './issues/issues.component';
 
-import { RepoService } from './repo/repo.service';
+import { RepoService } from './services/repo.service';
 
 let fixture: ComponentFixture<AppComponent>;
 let app: AppComponent
@@ -28,7 +29,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent, 
         RepoComponent,
-        RepoDetailComponent
+        RepoDetailComponent,
+        IssuesComponent
       ],
       imports: [
         HttpModule,

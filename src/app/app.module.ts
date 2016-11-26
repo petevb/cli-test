@@ -7,14 +7,16 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
-import { RepoService } from './repo/repo.service';
+import { RepoService } from './services/repo.service';
 import { RepoDetailComponent } from './repo-detail/repo-detail.component';
+import { IssuesComponent } from './issues/issues.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RepoComponent,
-    RepoDetailComponent
+    RepoDetailComponent,
+    IssuesComponent
   ],
   imports: [
     BrowserModule,
