@@ -1,21 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-//import { HttpModule } from '@angular/http';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { Http } from '@angular/http';
 import {
   HttpModule, XHRBackend, Response, ResponseOptions
 } from '@angular/http';
-
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { AppComponent } from './app.component';
+import { IssuesComponent  } from './issues/issues.component';
 import { RepoComponent } from './repo/repo.component';
 import { RepoDetailComponent  } from './repo-detail/repo-detail.component';
-import { IssuesComponent  } from './issues/issues.component';
-
+import { RepoListComponent } from './repo-list/repo-list.component';
+import { SearchComponent  } from './search/search.component';
 import { RepoService } from './services/repo.service';
 
 let fixture: ComponentFixture<AppComponent>;
@@ -28,9 +27,11 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent, 
+        IssuesComponent,
         RepoComponent,
         RepoDetailComponent,
-        IssuesComponent
+        RepoListComponent,
+        SearchComponent
       ],
       imports: [
         HttpModule,

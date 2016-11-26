@@ -11,6 +11,8 @@ import { RepoService } from './services/repo.service';
 import { RepoDetailComponent } from './repo-detail/repo-detail.component';
 import { IssuesComponent } from './issues/issues.component';
 import { RepoDetailResolveService } from './services/repo-detail-resolve.service';
+import { SearchComponent } from './search/search.component';
+import { RepoListComponent } from './repo-list/repo-list.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { RepoDetailResolveService } from './services/repo-detail-resolve.service
     AppComponent,
     RepoComponent,
     RepoDetailComponent,
-    IssuesComponent
+    IssuesComponent,
+    SearchComponent,
+    RepoListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,11 +32,14 @@ import { RepoDetailResolveService } from './services/repo-detail-resolve.service
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: '/repo-list',
+        redirectTo: '/repo',
         pathMatch: 'full'
       }, {
-        path: 'repo-list',
+        path: 'repo',
         component: RepoComponent
+      }, {
+        path: 'repo-list',
+        component: RepoListComponent
       },
       {
         path: 'repo-detail/:id',
