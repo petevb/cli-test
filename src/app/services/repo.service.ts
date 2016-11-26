@@ -3,16 +3,14 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { Repo } from '../repo/repo';
+import { RepoModel } from '../models/repo.model';
 import { ReposMock } from './repo-mock';
 
 @Injectable()
 export class RepoService {
-  constructor(private http: Http) {
+  constructor(private http: Http) { }
 
-  }
-
-  public getRepos(): Promise<Repo[]> {
+  public getRepos(): Promise<RepoModel[]> {
     return ReposMock.getData();
   }
 
@@ -30,8 +28,8 @@ export class RepoService {
       });
   }
 
-  public searchObservable(name: string) {
-    let url = `https://api.github.com/search/repositories?q=${name}`;
+  public searchObservable(name: string = 'typescript') {
+    let url = `https://api.github.com/search/repositories?q=${name}&per_page=4`;
 
     return this.http.get(url)
       .map(this.mapData)
@@ -44,35 +42,20 @@ export class RepoService {
       items: body.items,
       total_count: body.total_count
     }
-    return data || { };
+    return data || {};
   }
 
-  public getRepo(id: number): Promise<Repo> {
+  public getRepo(id: number): Promise<RepoModel> {
     return this.search()
       .then(repos => repos.find(repo => repo.id === id))
       .then(repo => {
+        console.log(`RepoService for id ${id} got repo ${repo || "undefined"}`);
         return {
           id: repo.id,
           fullName: repo.full_name,
           name: repo.name
         };
-      })
-/*      .then(repo => {
-        const url = `https://api.github.com/search/issues?q=repo:${repo.full_name}`;
-        console.warn(url);
-        return url;
-      }).then(url => {
-        return this.http.get(url)
-          .map(response => response.json().items)
-          .toPromise();
-      })*/
-  }
-
-  public getIssues(fullName: string): Promise</*Issues[]*/ any> {
-    const url = `https://api.github.com/search/issues?q=repo:${fullName}`;
-    return this.http.get(url)
-      .map(response => response.json().items)
-      .toPromise();
+      });
   }
 
   /**

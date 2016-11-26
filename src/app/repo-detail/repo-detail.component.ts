@@ -3,20 +3,22 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
+import { RepoModel } from '../models/repo.model';
 import { RepoService } from '../services/repo.service';
-import { Repo } from '../repo/repo';
+//import { IssuesService } from '../services/issues.service';
 import { IssuesComponent } from '../issues/issues.component';
 
 @Component({
   selector: 'app-repo-detail',
   templateUrl: './repo-detail.component.html',
   styleUrls: ['./repo-detail.component.css'],
-  providers: [RepoService]
+  providers: [
+    RepoService
+  ]
 })
 export class RepoDetailComponent implements OnInit {
-  @Input()
-  repo: Repo;
-  issues: any[];
+  //@Input()
+  repo: RepoModel;
 
   constructor(
     private repoService: RepoService,
@@ -25,15 +27,18 @@ export class RepoDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params
-      .switchMap((params: Params) => this.repoService.getRepo(+params['id']))
-      .subscribe(repo => {
-        console.log(repo);
-        this.repo = repo;
-        this.repoService.getIssues(repo.fullName).then(
-          issues => this.issues = issues
-        );
+    this.route.data
+      .subscribe((data: {repo: RepoModel}) => {
+        console.log(data.repo);
+        this.repo = data.repo;
       });
+
+    // this.route.params
+    //   .switchMap((params: Params) => this.repoService.getRepo(+params['id']))
+    //   .subscribe(repo => {
+    //     console.log(repo);
+    //     this.repo = repo;
+    //   });
   }
 
   goBack(): void {

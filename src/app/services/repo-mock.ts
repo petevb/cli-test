@@ -1,7 +1,7 @@
-import { Repo } from '../repo/repo';
+import { RepoModel } from '../models/repo.model';
 
 class MockData {
-    static readonly REPOS: Repo[] = [
+    static readonly REPOS: RepoModel[] = [
         {
             id: "1",
             name: "test1",
@@ -29,8 +29,8 @@ class MockData {
         }
     ];
 
-    public getData(): Promise<Repo[]> {
-        return new Promise<Repo[]>(resolve => setTimeout(resolve, 2000)).then(() => MockData.REPOS);
+    public getData(): Promise<RepoModel[]> {
+        return new Promise<RepoModel[]>(resolve => setTimeout(resolve, 2000)).then(() => MockData.REPOS);
     }
 }
 

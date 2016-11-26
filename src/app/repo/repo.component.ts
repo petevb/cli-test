@@ -5,7 +5,7 @@ import { Router }   from '@angular/router';
 
 //import { RepoDetailComponent  } from '../repo-detail/repo-detail.component';
 import { RepoService } from '../services/repo.service';
-import { Repo } from './repo';
+import { RepoModel } from '../models/repo.model';
 
 @Component({
   selector: 'app-repo',
@@ -14,10 +14,10 @@ import { Repo } from './repo';
   providers: [RepoService]
 })
 export class RepoComponent implements OnInit {
-  selectedRepo: Repo;
+  selectedRepo: RepoModel;
   private title: string = 'RepoComponent';
   private total_count: number;
-  private repos: Repo[];
+  private repos: RepoModel[];
   private waiting: boolean = true;
 
   constructor(
@@ -51,9 +51,9 @@ export class RepoComponent implements OnInit {
     this.getRepos();
   }
 
-  public onSelect(repo: Repo): void {
-    console.warn('onSelect', repo);
+  public onSelect(repo: RepoModel): void {
+    console.log('onSelect', repo);
     this.selectedRepo = repo;
-    this.router.navigate(['/detail', this.selectedRepo.id]);
+    this.router.navigate(['/repo-detail', this.selectedRepo.id]);
   }
 }

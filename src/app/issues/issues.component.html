@@ -1,3 +1,7 @@
-<p>
-  issues works!
-</p>
+<ul *ngIf="issues" class="list-unstyled">
+  <li *ngFor="let issue of issues">
+    <h5>{{issue.title}}</h5>
+    <span> state: {{issue.state}}</span> Issue {{issue.number}} opened at {{issue.created_at}} by {{issue.user.login}}
+    <hr>
+  </li>
+</ul>

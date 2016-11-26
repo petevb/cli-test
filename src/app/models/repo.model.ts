@@ -1,4 +1,4 @@
-export class Repo {
+export class RepoModel {
     public id: string;
     public name: string;
     public fullName: string;

@@ -10,6 +10,8 @@ import { RepoComponent } from './repo/repo.component';
 import { RepoService } from './services/repo.service';
 import { RepoDetailComponent } from './repo-detail/repo-detail.component';
 import { IssuesComponent } from './issues/issues.component';
+import { RepoDetailResolveService } from './services/repo-detail-resolve.service';
+
 
 @NgModule({
   declarations: [
@@ -33,12 +35,18 @@ import { IssuesComponent } from './issues/issues.component';
         component: RepoComponent
       },
       {
-        path: 'detail/:id',
-        component: RepoDetailComponent
+        path: 'repo-detail/:id',
+        component: RepoDetailComponent,
+        resolve: {
+          repo: RepoDetailResolveService
+        }  
       },
     ])
   ],
-  providers: [RepoService],
+  providers: [
+    RepoService,
+    RepoDetailResolveService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

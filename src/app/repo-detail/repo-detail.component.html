@@ -2,16 +2,6 @@
   <h2>{{repo.name}}</h2>
   <div><label>name: </label>{{repo.name}}</div>
   <div><label>issues_url: </label><a href="{{repo.issues_url}}">{{repo.issues_url}}</a></div>
-
-  <app-issues>app issues</app-issues>
-
-  <ul *ngIf="issues" class="list-unstyled">
-
-    <li *ngFor="let issue of issues">
-      <h5>{{issue.title}}</h5>
-      <span> state: {{issue.state}}</span> Issue {{issue.number}} opened at {{issue.created_at}} by {{issue.user.login}}
-      <hr>
-    </li>
-  </ul>
+  <app-issues [repo]="repo">app issues</app-issues>
 </div>
 <button (click)="goBack()">Back</button>

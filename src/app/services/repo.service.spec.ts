@@ -21,4 +21,8 @@ describe('RepoService', () => {
     expect(service.getRepos).toBeTruthy();
   }));
 
+  it('should have a get method to return a single repo from the service', inject([RepoService], (service: RepoService) => {
+    expect(service.getRepo).toBeTruthy();
+  }));
+
 });
