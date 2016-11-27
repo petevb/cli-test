@@ -1,7 +1,11 @@
 button {
-    margin: 2px auto 2px;
+    margin: 4px auto 8px;
 }
 
 li.repos {
     border-bottom: 1px solid slategrey;
+}
+
+h3 {
+    margin-top: .2em;
 }

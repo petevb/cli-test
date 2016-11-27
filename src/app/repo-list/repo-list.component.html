@@ -1,13 +1,13 @@
 <h2 *ngIf="waiting">Please wait...</h2>
 
 <div *ngIf="showResults">
-  <h3 *ngIf="total_count">Found {{total_count}} results for {{searchTerm}}</h3>
+  <h4 *ngIf="total_count">Found {{total_count}} results for {{searchTerm}}</h4>
   <div class="row" *ngIf="repos">
     <div class="col-md-1"> </div>
     <div class="col-md-11">
       <ul class="list-unstyled">
         <li class="repos" *ngFor="let repo of repos">
-          <h3 ><a href="repo-detail/{{repo.name}}/{{repo.id}}">{{repo.full_name}}</a></h3>
+          <h3><a href="repo-detail/{{repo.name}}/{{repo.id}}">{{repo.full_name}}</a></h3>
           <span>{{repo.description}}</span>
           <ul class="interestingURLs">
             <li>HTML URL <a href="{{repo.html_url}}">({{repo.html_url}})</a></li>
