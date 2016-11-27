@@ -7,7 +7,7 @@
     <div class="col-md-11">
       <ul class="list-unstyled">
         <li class="repos" *ngFor="let repo of repos">
-          <h3><a (click)="onSelect(repo)" href="repo-detail/{{repo.name}}/{{repo.id}}">{{repo.fullName}}</a></h3>
+          <h3><a (click)="onSelect(repo)" href="repo-detail/{{repo.name}}/{{repo.id}}"><img class="avatar" src="{{repo.owner.avatarUrl}}&s=32" alt="{{repo.owner.login}}"> {{repo.fullName}}</a></h3>
           <span>{{repo.description}}</span>
           <ul class="interestingURLs">
             <li>HTML URL <a href="{{repo.html_url}}">{{repo.htmlUrl}}</a></li>

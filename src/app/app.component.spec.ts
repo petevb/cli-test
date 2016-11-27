@@ -23,7 +23,7 @@ let fixture: ComponentFixture<AppComponent>;
 let app: AppComponent
 
 describe('AppComponent', () => {
-  const title = "GitHub API";
+  const title = "GitHub API in Angular 2";
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -64,6 +64,6 @@ describe('AppComponent', () => {
   it('should render title in an element', async(() => {
     fixture.detectChanges();
     let nativeElement = fixture.debugElement.nativeElement;
-    expect(nativeElement.textContent).toContain(title, `Element should say something about "${title}"`);
+    expect(nativeElement.textContent).toContain(title, `Element should say "${title}"`);
   }));
 });

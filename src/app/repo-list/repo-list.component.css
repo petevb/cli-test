@@ -12,6 +12,10 @@ h3 {
 
 div.row {
     /* hack: how to couple to the search component's height, move to syles.css?*/
-    height: calc(100vh - 250px);
+    height: calc(100vh - 340px);
     overflow-y: auto;
+}
+
+img.avatar {
+    width: 32px;
 }
