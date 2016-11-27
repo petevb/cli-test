@@ -13,7 +13,7 @@ import { RepoModel } from '../models/repo.model';
   styleUrls: ['./repo-list.component.css'],
   providers: [RepoService]
 })
-export class RepoListComponent implements OnInit {
+export class RepoListComponent  {
   selectedRepo: RepoModel;
   private title: string = 'RepoComponent';
   private total_count: number;
@@ -45,6 +45,7 @@ export class RepoListComponent implements OnInit {
         console.warn(`total count = ${data.total_count}`);
         this.total_count = data.total_count;
         this.repos = data.items;
+        
         // Make these computed so that it updates when the observable refreshes?
         this.waiting = false;
         this.showResults = true;

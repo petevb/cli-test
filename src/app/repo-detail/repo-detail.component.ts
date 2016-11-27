@@ -27,6 +27,9 @@ export class RepoDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const name: string = this.route.params['name'];
+    console.log(`RepoDetail.ngOnInit ${name}`);
+
     this.route.data
       .subscribe((data: {repo: RepoModel}) => {
         console.log(data.repo);

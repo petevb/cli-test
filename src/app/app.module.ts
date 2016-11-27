@@ -35,13 +35,12 @@ import { RepoListComponent } from './repo-list/repo-list.component';
         redirectTo: '/repo',
         pathMatch: 'full'
       }, {
+        path: 'repo/:name',
+        component: RepoComponent
+      }, {
         path: 'repo',
         component: RepoComponent
       }, {
-        path: 'repo-list',
-        component: RepoListComponent
-      },
-      {
         path: 'repo-detail/:name/:id',
         component: RepoDetailComponent,
         resolve: {
