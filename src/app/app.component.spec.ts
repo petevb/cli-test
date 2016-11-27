@@ -6,8 +6,10 @@ import { Http } from '@angular/http';
 import {
   HttpModule, XHRBackend, Response, ResponseOptions
 } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { PaginationComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { IssuesComponent  } from './issues/issues.component';
@@ -28,12 +30,14 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent, 
         IssuesComponent,
+        PaginationComponent,
         RepoComponent,
         RepoDetailComponent,
         RepoListComponent,
         SearchComponent
       ],
       imports: [
+        FormsModule,
         HttpModule,
         RouterTestingModule
       ],
@@ -57,18 +61,9 @@ describe('AppComponent', () => {
     expect(app.title).toEqual(title);
   }));
 
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in an element', async(() => {
     fixture.detectChanges();
     let nativeElement = fixture.debugElement.nativeElement;
-
-    // TODO pick one of these approaches:
-
-    expect(nativeElement.querySelector('h1').textContent).toContain(title);
-    
-    expect(nativeElement.textContent).toContain(title);
-
-    const h1 = nativeElement;
-    expect(h1.innerText).toMatch(/github/i,
-      `<h1> should say something about "${title}"`);
+    expect(nativeElement.textContent).toContain(title, `Element should say something about "${title}"`);
   }));
 });

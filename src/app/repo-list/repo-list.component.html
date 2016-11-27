@@ -1,7 +1,7 @@
-<h2 *ngIf="waiting">Please wait...</h2>
+<h4 *ngIf="waiting">Please wait...</h4>
 
 <div *ngIf="showResults">
-  <h4 *ngIf="total_count">Found {{totalCount}} results for {{searchTerm}}</h4>
+  <h4>{{totalCount}} results found for {{searchTerm}} <span *ngIf="totalCount !== totalCountForPagination">(only the first 1000 are viewable)</span></h4>
   <div class="row" *ngIf="repos">
     <div class="col-md-1"> </div>
     <div class="col-md-11">
@@ -23,5 +23,17 @@
         </li>
       </ul>
     </div>
+  </div>
+
+  <div class="text-center">
+    <pagination class="pagination-sm" 
+      [totalItems]="totalCountForPagination" 
+      [(ngModel)]="currentPage" 
+      [maxSize]="maxSize" 
+      [boundaryLinks]="true" 
+      [rotate]="false" 
+      (numPages)="numPages = $event" 
+      (pageChanged)="pageChanged($event)">
+    </pagination>
   </div>
 </div>

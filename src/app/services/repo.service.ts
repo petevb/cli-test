@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-// TODO: Consume the ones after Http.
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { RepoModel } from '../models/repo.model';
@@ -8,37 +7,31 @@ import { ReposMock } from './repo-mock';
 
 @Injectable()
 export class RepoService {
-  term: string;
+    term: string;
 
-  constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
-  public getRepos(): Promise<RepoModel[]> {
-    return ReposMock.getData();
-  }
-
-  public search(name: string) {
-    this.term = name;
-    let url = `https://api.github.com/search/repositories?q=${name}&per_page=4`;
-
-    // using fetch api something like:
-    // fetch(url).then(response => response.json());
-    return this.http.get(url)
-      .map(response => response.json().items)
-      .toPromise()
-      .catch(e => {
-        console.warn(e);
-        return Promise.reject(e);
-      });
-  }
-
-  public searchObservable(name: string) {
-    if (!name) {
-      throw new Error("name cannot be empty.");
+    public getRepos(): Promise<RepoModel[]> {
+        return ReposMock.getData();
     }
-    
-    let url = `https://api.github.com/search/repositories?q=${name}&per_page=4`;
 
-    return this.http.get(url)
+    /**
+     * Search for a repository by name, starting at given page.
+     * 
+     * @param {string} name     The name to search.
+     * @param {number} [page=1] Page of results you want.
+     * @returns Observable Array of RepoModel
+     * 
+     * @memberOf RepoService
+     */
+    public search(name: string, page: number = 1) {
+        if (!name) {
+            throw new Error("name cannot be empty.");
+        }
+        const pageSize = 10;
+        const url = `https://api.github.com/search/repositories?q=${name}&per_page=${pageSize}&page=${page}`;
+
+         return this.http.get(url)
       .map(this.mapData)
       .catch(this.handleError);
   }
@@ -52,29 +45,43 @@ export class RepoService {
     return data || {};
   }
 
-  public getRepo(name:string, id: number): Promise<RepoModel> {
-    return this.search(name)
-      .then(repos => repos.find(repo => repo.id === id))
-      .then(repo => {
-        console.log(`RepoService for id ${id} got repo ${repo || "undefined"}`);
-        return new RepoModel(repo);
-      });
-  }
-
-  /**
-   * log to the console for now (likely server later)
-   * and then let rxjs continue.
-   */
-  private handleError(error: Response | any) {
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
+    /**
+     * Gets an individual Repository.
+     * 
+     * @param {string} owner of the repo 
+     * @param {string} name of the repo
+     * @returns {Promise<RepoModel>}
+     * 
+     * @memberOf RepoService
+     */
+    public getRepo(owner: string, name: string): Promise<RepoModel> {
+        const url = `https://api.github.com/repos/${owner}/${name}`;
+      
+         return this.http.get(url)
+            .map(response => response.json())
+            .toPromise()
+            .then(repo => new RepoModel(repo))
+            .then(repo => {
+              console.log(`RepoService for ${owner}/${name} got repo ${repo || "undefined"}`)
+              return repo;
+            })
+            .catch(e => this.handleError);
     }
-    console.error(errMsg);
-    return Observable.throw(errMsg);
-  }
+
+    /**
+     * log to the console for now (likely server later)
+     * and then let rxjs continue.
+     */
+    private handleError(error: Response | any) {
+        let errMsg: string;
+        if (error instanceof Response) {
+            const body = error.json() || '';
+            const err = body.error || JSON.stringify(body);
+            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        } else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable.throw(errMsg);
+    }
 }

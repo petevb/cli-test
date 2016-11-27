@@ -2,8 +2,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
+//import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { PaginationComponent } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { RepoListComponent } from './repo-list.component';
 import { RepoService } from '../services/repo.service';
@@ -29,12 +32,15 @@ describe('RepoListComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ 
-        RepoListComponent,
-        RepoDetailComponent,
-        IssuesComponent 
+        IssuesComponent,
+        PaginationComponent,
+        RepoDetailComponent, 
+        RepoListComponent
       ],
       imports: [
-        HttpModule
+        FormsModule,
+        HttpModule, 
+        //PaginationModule
       ],
       providers: [ 
         { provide: RepoService, useValue: repoServiceStub }, 

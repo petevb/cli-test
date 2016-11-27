@@ -24,14 +24,12 @@ export class RepoDetailResolveService implements Resolve<RepoModel> {
   constructor(private repoService: RepoService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot): Promise<RepoModel> | boolean {
-    const id: number = +route.params['id'];
-    const name: string = route.params['name'];
+    const owner: string = route.params['owner'];
+    const repoName: string = route.params['name'];
 
-    console.log(`RepoDetailResolve[Service] got id:${id}, ${name}`);
+    console.log(`RepoDetailResolve[Service] got id:${owner}, ${repoName}`);
 
-    //   .switchMap((params: Params) => this.repoService.getRepo(+params['id']))
-
-    return this.repoService.getRepo(name, id).then(repo => {
+    return this.repoService.getRepo(owner, repoName).then(repo => {
       if (repo) {
         return repo;
       } else { // id not found

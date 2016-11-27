@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
@@ -29,6 +30,7 @@ import { RepoListComponent } from './repo-list/repo-list.component';
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
+    PaginationModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -41,7 +43,7 @@ import { RepoListComponent } from './repo-list/repo-list.component';
         path: 'repo',
         component: RepoComponent
       }, {
-        path: 'repo-detail/:name/:id',
+        path: 'repo-detail/:owner/:name',
         component: RepoDetailComponent,
         resolve: {
           repo: RepoDetailResolveService

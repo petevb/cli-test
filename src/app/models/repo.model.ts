@@ -7,6 +7,7 @@
 export class RepoModel {
     public id: string;
     public name: string;
+    public owner: { login: string, avatarUrl: string };
     public fullName: string;
     public url?: string | undefined;
     public htmlUrl?: string | undefined;
@@ -26,6 +27,7 @@ export class RepoModel {
      *         id: string;
      *         name: string;
      *         full_name: string;
+     *         owner: string;
      *         url?: string | undefined;
      *         html_url?: string | undefined;
      *         api_url?: string | undefined;
@@ -42,6 +44,7 @@ export class RepoModel {
         id: string;
         name: string;
         full_name: string;
+        owner: { login: string, avatar_url?: string },
         url?: string | undefined;
         html_url?: string | undefined;
         api_url?: string | undefined;
@@ -54,6 +57,7 @@ export class RepoModel {
         this.id = data.id;
         this.name = data.name;
         this.fullName = data.full_name;
+        this.owner = { login: data.owner.login, avatarUrl: data.owner.avatar_url };
         this.apiUrl = data.url;
         this.htmlUrl = data.html_url;
         this.issuesUrl = (data.issues_url || '').replace("{/number}", `/${this.id}`);
