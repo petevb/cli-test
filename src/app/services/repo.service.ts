@@ -46,8 +46,8 @@ export class RepoService {
   private mapData(res: Response) {
     let body = res.json();
     let data = {
-      items: body.items,
-      total_count: body.total_count
+      items: body.items.map(item => new RepoModel(item)),
+      totalCount: body.total_count
     }
     return data || {};
   }
@@ -57,11 +57,7 @@ export class RepoService {
       .then(repos => repos.find(repo => repo.id === id))
       .then(repo => {
         console.log(`RepoService for id ${id} got repo ${repo || "undefined"}`);
-        return {
-          id: repo.id,
-          fullName: repo.full_name,
-          name: repo.name
-        };
+        return new RepoModel(repo);
       });
   }
 

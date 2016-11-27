@@ -16,7 +16,7 @@ import { RepoModel } from '../models/repo.model';
 export class RepoListComponent  {
   selectedRepo: RepoModel;
   private title: string = 'RepoComponent';
-  private total_count: number;
+  private totalCount: number;
   private searchTerm: string;
   private showResults: boolean = false;
 
@@ -43,7 +43,7 @@ export class RepoListComponent  {
       .subscribe(
       data => {
         console.warn(`total count = ${data.total_count}`);
-        this.total_count = data.total_count;
+        this.totalCount = data.total_count;
         this.repos = data.items;
         
         // Make these computed so that it updates when the observable refreshes?
@@ -57,9 +57,10 @@ export class RepoListComponent  {
       );
   }
 
-  public onSelect(repo: RepoModel): void {
+  public onSelect(repo: RepoModel): boolean {
     console.log('onSelect', repo);
     this.selectedRepo = repo;
     this.router.navigate(['/repo-detail', this.selectedRepo.name, this.selectedRepo.id]);
+    return false;
   }
 }

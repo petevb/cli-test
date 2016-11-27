@@ -1,23 +1,23 @@
 <h2 *ngIf="waiting">Please wait...</h2>
 
 <div *ngIf="showResults">
-  <h4 *ngIf="total_count">Found {{total_count}} results for {{searchTerm}}</h4>
+  <h4 *ngIf="total_count">Found {{totalCount}} results for {{searchTerm}}</h4>
   <div class="row" *ngIf="repos">
     <div class="col-md-1"> </div>
     <div class="col-md-11">
       <ul class="list-unstyled">
         <li class="repos" *ngFor="let repo of repos">
-          <h3><a href="repo-detail/{{repo.name}}/{{repo.id}}">{{repo.full_name}}</a></h3>
+          <h3><a (click)="onSelect(repo)" href="repo-detail/{{repo.name}}/{{repo.id}}">{{repo.fullName}}</a></h3>
           <span>{{repo.description}}</span>
           <ul class="interestingURLs">
-            <li>HTML URL <a href="{{repo.html_url}}">({{repo.html_url}})</a></li>
-            <li>API URL <a href="{{repo.url}}">{{repo.url}}</a></li>
-            <li>Issues API URL <a href="{{repo.issues_url}}">{{repo.issues_url}}</a></li>
+            <li>HTML URL <a href="{{repo.html_url}}">{{repo.htmlUrl}}</a></li>
+            <li>API URL <a href="{{repo.url}}">{{repo.apiUrl}}</a></li>
+            <li>Issues API URL <a href="{{repo.issues_url}}">{{repo.issuesUrl}}</a></li>
           </ul>
           <ul class="list-inline badges">
-            <li>Forks <span class="badge">{{repo.forks_count}}</span></li>
-            <li>Stargazers <span class="badge">{{repo.stargazers_count}}</span></li>
-            <li>Open Issues <span class="badge">{{repo.open_issues_count}}</span></li>
+            <li>Forks <span class="badge">{{repo.forksCount}}</span></li>
+            <li>Stargazers <span class="badge">{{repo.stargazersCount}}</span></li>
+            <li>Open Issues <span class="badge">{{repo.openIssuesCount}}</span></li>
           </ul>
           <button (click)="onSelect(repo)">View Issues</button>
         </li>

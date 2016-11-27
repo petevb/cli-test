@@ -11,40 +11,55 @@ export class RepoModel {
     public url?: string | undefined;
     public htmlUrl?: string | undefined;
     public apiUrl?: string | undefined;
-    public issuesApiUrl?: string | undefined;
+    public issuesUrl?: string | undefined;
     public description?: string | undefined;
-    public forkCount?: number | undefined;
-    public stargazerCount?: number | undefined;
-    public openIssueCount?: number | undefined;
+    public forksCount?: number | undefined;
+    public stargazersCount?: number | undefined;
+    public openIssuesCount?: number | undefined;
+
 
     /**
      * Creates an instance of RepoModel.
+     * Maps the github API's snake_case props to JS' camelCase.
      * 
-     * @param {string} id
-     * @param {string} name
-     * @param {string} fullName
-     * @param {(string | undefined)} [url]
-     * @param {(string | undefined)} [htmlUrl]
-     * @param {(string | undefined)} [apiUrl]
-     * @param {(string | undefined)} [issuesApiUrl]
-     * @param {(string | undefined)} [description]
-     * @param {(number | undefined)} [forkCount]
-     * @param {(number | undefined)} [stargazerCount]
-     * @param {(number | undefined)} [openIssueCount]
+     * @param {({ 
+     *         id: string;
+     *         name: string;
+     *         full_name: string;
+     *         url?: string | undefined;
+     *         html_url?: string | undefined;
+     *         api_url?: string | undefined;
+     *         issues_api_url?: string | undefined;
+     *         description?: string | undefined;
+     *         fork_count?: number | undefined;
+     *         stargazer_count?: number | undefined;
+     *         open_issue_count?: number | undefined;
+     *     })} data
      * 
      * @memberOf RepoModel
      */
     constructor(data: { 
         id: string;
         name: string;
-        fullName: string;
+        full_name: string;
         url?: string | undefined;
-        htmlUrl?: string | undefined;
-        apiUrl?: string | undefined;
-        issuesApiUrl?: string | undefined;
+        html_url?: string | undefined;
+        api_url?: string | undefined;
+        issues_url?: string | undefined;
         description?: string | undefined;
-        forkCount?: number | undefined;
-        stargazerCount?: number | undefined;
-        openIssueCount?: number | undefined;
-    }) { } 
+        forks_count?: number | undefined;
+        stargazers_count?: number | undefined;
+        open_issues_count?: number | undefined;
+    }) { 
+        this.id = data.id;
+        this.name = data.name;
+        this.fullName = data.full_name;
+        this.apiUrl = data.url;
+        this.htmlUrl = data.html_url;
+        this.issuesUrl = (data.issues_url || '').replace("{/number}", `/${this.id}`);
+        this.description = data.description;
+        this.forksCount = data.forks_count;
+        this.stargazersCount = data.stargazers_count;
+        this.openIssuesCount = data.open_issues_count;
+    } 
 }
