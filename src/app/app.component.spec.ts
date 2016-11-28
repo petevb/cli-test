@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { PaginationComponent } from 'ng2-bootstrap/ng2-bootstrap';
+import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { IssuesComponent  } from './issues/issues.component';
@@ -39,6 +40,7 @@ describe('AppComponent', () => {
       imports: [
         FormsModule,
         HttpModule,
+        MomentModule,
         RouterTestingModule
       ],
       providers: [

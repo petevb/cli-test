@@ -5,8 +5,9 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
-//import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { PaginationComponent } from 'ng2-bootstrap/ng2-bootstrap';
+import { MomentModule } from 'angular2-moment';
+
 
 import { RepoListComponent } from './repo-list.component';
 import { RepoService } from '../services/repo.service';
@@ -39,8 +40,8 @@ describe('RepoListComponent', () => {
       ],
       imports: [
         FormsModule,
-        HttpModule, 
-        //PaginationModule
+        HttpModule,
+        MomentModule
       ],
       providers: [ 
         { provide: RepoService, useValue: repoServiceStub }, 

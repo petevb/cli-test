@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { MomentModule } from 'angular2-moment';
 
 import { AppComponent } from './app.component';
 import { RepoComponent } from './repo/repo.component';
@@ -29,6 +30,7 @@ import { RepoListComponent } from './repo-list/repo-list.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    MomentModule,
     NgbModule.forRoot(),
     PaginationModule,
     RouterModule.forRoot([
