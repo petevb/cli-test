@@ -1,22 +1,32 @@
 # GitHubApp
 
-This is my first Angular app, for v1 or 2.  I'm pretty-good at Knockout and okay at Backbone. 
+This is my first ever Angular app, for v1 or 2.  
 
-I thought it would be useful to try and learn Angular for the task.  
-... and it was.  Useful, I mean.  But, it's still a steep learning curve.  
+I think I'm pretty-good at Knockout and okay at Backbone.  Some of the concepts 
+"translate", other bits not so much. 
 
-My test specs are behind.  Sloppy, I know.  Sorry.
+But I thought it would be useful to try and learn Angular for the task.  
+It was, very useful.  I learnt a lot but it's still a steep learning curve.  
+
+My test specs are behind.  Sorry.
 
 My issues component is lacking pagination.  Given I got that working in the
 repo list it shouldn't be too hard to do.
 
-As well as tests, I'd want to do more validation, e.g. aria and responsive.
+As well as tests, I'd want to do more e.g. standards or accessibility.  It
+could also do with much TLC on the design front.  The UI isn't great.  There's
+no attempt at localisation, I assumed that to be out of scope.
+
+I've just done some charting at work based on c3js (which is based on d3), 
+but I ran out of time before adding visualisations to this.   I'll probably
+try that next, just to see how it works compared to knockout.js. 
 
 There's a bug that that location doesn't update when the search term changes 
 - I wanted to be able to "deep-link" to a search term so that a browser navigating
-back from Issues would keep the context of the RepoList.  There are likely others, 
-given how few tests are running!   
+back from repo-detail (Issues list) would keep the context of the RepoList.  
+I'm sure that there are others, given how few tests are running!   
 
+Thanks,
 Pete.
 
 ----
