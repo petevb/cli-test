@@ -18,7 +18,6 @@ export class RepoModel {
     public stargazersCount?: number | undefined;
     public openIssuesCount?: number | undefined;
 
-
     /**
      * Creates an instance of RepoModel.
      * Maps the github API's snake_case props to JS' camelCase.
@@ -60,7 +59,8 @@ export class RepoModel {
         this.owner = { login: data.owner.login, avatarUrl: data.owner.avatar_url };
         this.apiUrl = data.url;
         this.htmlUrl = data.html_url;
-        this.issuesUrl = (data.issues_url || '').replace("{/number}", `/${this.id}`);
+        // remove the suffix so that url is navigable.
+        this.issuesUrl = (data.issues_url || '').replace('{/number}', '');
         this.description = data.description;
         this.forksCount = data.forks_count;
         this.stargazersCount = data.stargazers_count;

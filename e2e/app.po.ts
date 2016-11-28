@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class CliTestPage {
+export class GitHubAppPage {
   navigateTo() {
     return browser.get('/');
   }

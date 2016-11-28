@@ -11,6 +11,16 @@ export class RepoService {
 
     constructor(private http: Http) { }
 
+    /**
+     * Returns mock data for test purposes.
+     * 
+     * This would be better as a subclass of RepoService,
+     * e.g. create RepoServiceMock and override search
+     * 
+     * @returns {Promise<RepoModel[]>}
+     * 
+     * @memberOf RepoService
+     */
     public getRepos(): Promise<RepoModel[]> {
         return ReposMock.getData();
     }

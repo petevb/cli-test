@@ -1,0 +1,12 @@
+.header {
+    border-bottom: 1px solid grey;
+}
+
+li {
+    padding-bottom: 4px;
+    border-bottom: 1px solid grey;
+}
+
+.label {
+    color: black;
+}

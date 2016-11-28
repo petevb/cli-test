@@ -1,10 +1,10 @@
-import { CliTestPage } from './app.po';
+import { GitHubAppPage } from './app.po';
 
-describe('cli-test App', function() {
-  let page: CliTestPage;
+describe('github App', function() {
+  let page: GitHubAppPage;
 
   beforeEach(() => {
-    page = new CliTestPage();
+    page = new GitHubAppPage();
   });
 
   it('should display message saying app works', () => {

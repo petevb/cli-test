@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
 
-//import { RepoDetailComponent  } from '../repo-detail/repo-detail.component';
 import { RepoService } from '../services/repo.service';
 import { RepoModel } from '../models/repo.model';
 

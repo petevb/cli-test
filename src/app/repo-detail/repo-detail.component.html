@@ -1,7 +1,9 @@
 <div *ngIf="repo">
-  <h2>{{repo.name}}</h2>
-  <div><label>name: </label>{{repo.name}}</div>
-  <div><label>issues_url: </label><a href="{{repo.issues_url}}">{{repo.issues_url}}</a></div>
+  <div class="header">
+    <h3>{{repo.fullName}} Issues</h3>
+    <div><label>API: </label><a href="{{repo.issuesUrl}}" target="_blank">{{repo.issuesUrl}}</a></div>
+    <button (click)="goBack()">Back</button>
+  </div>
   <app-issues [repo]="repo">app issues</app-issues>
 </div>
 <button (click)="goBack()">Back</button>

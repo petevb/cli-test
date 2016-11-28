@@ -5,7 +5,6 @@ import 'rxjs/add/operator/switchMap';
 
 import { RepoModel } from '../models/repo.model';
 import { RepoService } from '../services/repo.service';
-//import { IssuesService } from '../services/issues.service';
 import { IssuesComponent } from '../issues/issues.component';
 
 @Component({
@@ -17,7 +16,6 @@ import { IssuesComponent } from '../issues/issues.component';
   ]
 })
 export class RepoDetailComponent implements OnInit {
-  //@Input()
   repo: RepoModel;
 
   constructor(
@@ -35,13 +33,6 @@ export class RepoDetailComponent implements OnInit {
         console.log(data.repo);
         this.repo = data.repo;
       });
-
-    // this.route.params
-    //   .switchMap((params: Params) => this.repoService.getRepo(+params['id']))
-    //   .subscribe(repo => {
-    //     console.log(repo);
-    //     this.repo = repo;
-    //   });
   }
 
   goBack(): void {

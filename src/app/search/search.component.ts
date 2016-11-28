@@ -2,6 +2,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
+/**
+ * Provides an input for search terms
+ * and emits onSearchChanged as appropriate
+ * (i.e. doesn't actually search, but gets input for search)
+ * 
+ * @export
+ * @class SearchComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',

@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+/**
+ * Holds the router-outlet to render the appropriate component.
+ * 
+ * @export
+ * @class AppComponent
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
