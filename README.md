@@ -1,5 +1,26 @@
 # GitHubApp
 
+This is my first Angular app, for v1 or 2.  I'm pretty-good at Knockout and okay at Backbone. 
+
+I thought it would be useful to try and learn Angular for the task.  
+... and it was.  Useful, I mean.  But, it's still a steep learning curve.  
+
+My test specs are behind.  Sloppy, I know.  Sorry.
+
+My issues component is lacking pagination.  Given I got that working in the
+repo list it shouldn't be too hard to do.
+
+As well as tests, I'd want to do more validation, e.g. aria and responsive.
+
+There's a bug that that location doesn't update when the search term changes 
+- I wanted to be able to "deep-link" to a search term so that a browser navigating
+back from Issues would keep the context of the RepoList.  There are likely others, 
+given how few tests are running!   
+
+Pete.
+
+----
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.20-4.
 
 ## Development server
