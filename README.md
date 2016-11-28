@@ -6,7 +6,9 @@ I think I'm pretty-good at Knockout and okay at Backbone.  Some of the concepts
 "translate", other bits not so much. 
 
 But I thought it would be useful to try and learn Angular for the task.  
-It was, very useful.  I learnt a lot but it's still a steep learning curve.  
+It was, very useful.  I learnt a lot but it's still a steep learning curve.
+The app borrows/reuses quite a bit from the ["Tour of Heroes"](https://angular.io/docs/ts/latest/tutorial/) tutorial.
+   
 
 My test specs are behind.  Sorry.
 
